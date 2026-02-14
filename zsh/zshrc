@@ -1,0 +1,83 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=10000000
+SAVEHIST=10000000
+setopt autocd extendedglob
+# bindkey -v
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/Users/alexanderhenson/.zshrc'
+
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+
+# Default editor
+export EDITOR=nvim
+export VISUAL="$EDITOR"
+
+
+# Configure brew
+export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_INSTALL_CLEANUP=1
+
+
+# Aliases
+alias q='exit'
+alias c='clear -x'
+alias python='python3'
+alias py='python3'
+
+
+alias run='function __run(){ g++ $1 && ./a.out };__run'
+
+
+alias t="tmux"
+alias ta="t a -t"
+alias tls="t ls"
+alias tn="t new -t"
+
+
+alias gcam="git commit -a -m"
+alias gdiff="git diff HEAD~1"
+
+alias diff="diff --color=always"
+
+
+alias lmk="latexmk -pvc -pdf"
+
+
+TREE_IGNORE=".*|node_modules|.git|.ipynb_checkpoints|airline_search_backups|.angular|\
+.DS_Store|venv|.gitignore|.npm|.lmstudio|go|__pycache__|bin|Google\ Drive|OneDrive\ \-\ ATPCO|Library"
+alias treeignore="tree -a -I '$TREE_IGNORE'"
+alias treegit='git ls-tree -r --name-only HEAD | tree --fromfile'
+
+
+alias watch_download='watch "ls -lh ."'
+
+
+# Remaps
+
+
+# This one was being buggy so I just use <C-w> : ' (
+#bindkey '^H' backward-kill-word
+#bindkey '^[[3~' kill-word
+
+
+# Setup cool terminal upgrades
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh --cmd cd)"
+# source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Added by LM Studio CLI (lms)
+# export PATH="$PATH:/Users/work/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+source venv/bin/activate
+
+. "$HOME/.local/bin/env"
+eval "$(~/.local/bin/mise activate)"

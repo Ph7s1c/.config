@@ -1,0 +1,8 @@
+background = 21252b
+foreground = ffffff
+
+font-family = "SauceCodePro NF"
+font-size = 20
+font-feature = -liga
+
+fullscreen = true

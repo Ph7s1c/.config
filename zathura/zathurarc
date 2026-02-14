@@ -1,0 +1,9 @@
+set window-height 870
+set window-width 1450 
+
+set selection-clipboard clipboard
+#set show-recent 0
+#map D set "first-page-column 1:1"
+#map <C-d> set "first-page-column 1:2"
+#map <C-i> recolor
+

@@ -1,0 +1,21 @@
+# comment
+# snippet <trigger> <description>
+# <snippet-body>
+# snippet if C-style if
+# if ($1)
+# 	$0
+
+
+snippet pd_ex "Default dataframe processing for EDA"
+    import pandas as pd
+
+    df = pd.read_csv('~/$0')
+
+    print(df.shape)
+    print(df.head())
+
+    colnames = list(df.columns)
+
+    for name in colnames:
+        unique_vals = df[name].unique()
+        print(f"Unique values in {name}: {unique_vals}")
