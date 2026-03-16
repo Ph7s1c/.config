@@ -1,22 +1,19 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    tag = "v0.9.2",
     build = ":TSUpdate",
     config = function()
-        require("nvim-treesitter.configs").setup({
-            ensure_installed = {
-                "vimdoc", "javascript", "c", "lua",
-                "jsdoc", "bash", "python",
-            },
-            sync_install = false,
-            auto_install = true,
-            indent = {
-                enable = true,
-            },
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = { "markdown" },
-            },
+        require("nvim-treesitter.install").install({
+            "vimdoc", "javascript", "c", "lua",
+            "jsdoc", "bash", "python",
+        })
+
+        vim.api.nvim_create_autocmd("FileType", {
+            group = vim.api.nvim_create_augroup("treesitter_config", { clear = true }),
+            callback = function(args)
+                local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+                if not lang then return end
+                pcall(vim.treesitter.start, args.buf, lang)
+            end,
         })
     end
 }
